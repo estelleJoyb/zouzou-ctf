@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue
+{% endblock %}
+{% block body %}
+	<section class="banner">
+		<div class="banner-header">
+			<h1 class="banner-header-title text-center">HomePage</h1>
+		</div>
+	</section>
+	<section class="container mt-4">
+		<h1>Salut les Zouzou</h1>
+		<p>Bah alors ? Comme ça on veut notre flag ?</p>
+		{% if user %}
+			<p>Bon ok...</p>
+			<a href="{{ path('app_login')}}">Il est là</a>
+			<a href="{{ path('app_logout')}}">Logout</a>
+		{% else %}
+			<p>D'abord il faut se connecter...</p>
+			<a href="{{ path('app_login')}}">Login</a>
+		{% endif %}
+
+
+	</section>
+{% endblock %}
