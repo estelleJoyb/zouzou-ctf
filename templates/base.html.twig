@@ -27,22 +27,16 @@
 </body>
 </html>
 <style>
-    .epilepsy{
-        text-align: center;
-        font-size: 4em;
-        margin-top: calc(50vh - .575em);
+    * {
         animation: epilepsy .07s infinite;
         font-family:'arial';
+        cursor: none !important; !important;
     }
     @keyframes epilepsy{
-        0%{color:black;background:white;}
-        50%{color:black;background:white;}
-        51%{color:white;background:black;}
-        100%{color:white;background:black;}
+        0%{color:black;background:white;filter: invert(0)}
+        50%{color:black;background:white;filter: invert(0)}
+        51%{color:white;background:black;filter: invert(1)}
+        100%{color:white;background:black;filter: invert(1)}
     }
 </style>
-<script>
-    document.getElementById("ok").addEventListener("click",function(){
-        document.getElementById("warning").remove();
-    });
-</script>
+
