@@ -12,12 +12,19 @@
 		{% else %}
 			<a id="login" class="bg-transparent; " href="{{ path('app_login')}}">Login</a>
 		{% endif %}
+		{{ render(controller(
+        'App\\Controller\\TestController::new'
+    )) }}
+		{{ render(controller(
+        'App\\Controller\\TestController::index'
+    )) }}
 	</section>
-<style>
-	#login {
-		color: #000; /* Fallback for older browsers */
-		color: rgba(0, 0, 0, 0) !important;
-		background-color: rgba(0, 0, 0, 0) !important;
-	}
-</style>
+	<style>
+		#login {
+			color: #000; /* Fallback for older browsers */
+			color: rgba(0, 0, 0, 0) !important;
+			background-color: rgba(0, 0, 0, 0) !important;
+		}
+	</style>
+
 {% endblock %}

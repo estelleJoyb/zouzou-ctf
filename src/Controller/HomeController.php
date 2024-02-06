@@ -1,10 +1,11 @@
 <?php
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\SecurityBundle\Security;
+use App\Repository\TestRepository;
+use App\Service\apiService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -13,9 +14,9 @@ class HomeController extends AbstractController
     }
 
     #[Route('', name: 'app.homepage')]
-    public function index(): Response
+    public function index(TestRepository $testRepository): Response
     {
         $user = $this->getUser();
-        return $this->render('Frontend/Home/index.html.twig', ['user' => $user]);
+        return $this->render('Frontend/Home/index.html.twig', ['user' => $user, 'commentaires' => $testRepository->findAll()]);
     }
 }

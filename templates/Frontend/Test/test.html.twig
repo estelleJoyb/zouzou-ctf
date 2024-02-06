@@ -1,0 +1,11 @@
+{% for commentaire in commentaires %}
+	<div class="card mt-2 w-75 mx-auto flex">
+		<div class="card-body">
+			<blockquote class="blockquote mb-0">
+				<p>{{commentaire.flag}}</p>
+				<footer class="blockquote-footer">{{cutewords[loop.index0].insult}}
+				</footer>
+			</blockquote>
+		</div>
+	</div>
+{% endfor %}
