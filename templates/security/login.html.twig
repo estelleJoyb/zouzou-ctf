@@ -8,6 +8,7 @@
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 	<form method="post" action="{{ path('app_login') }}">
+		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="_username" value="{{ last_username }}" required/>
 

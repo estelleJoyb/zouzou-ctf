@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/login', name: 'app_login')]
+    #[Route('/equx7kag82gmhe5', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // Si l'utilisateur est déjà connecté, on le redirige
