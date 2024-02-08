@@ -24,6 +24,7 @@ class TestRepository extends ServiceEntityRepository
     public function findAll(): array
     {
         return $this->createQueryBuilder('t')
+            ->orderBy('t.id', 'DESC')
             ->getQuery()
             ->getResult()
         ;
