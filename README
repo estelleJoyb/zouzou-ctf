@@ -1,0 +1,7 @@
+pour lancer cette application : 
+installer symfony : symfony check:requirements
+installer dependances symfo : composer install
+installer bd : php bin/console doctrine:database:create
+lancer le serveur : symfony server:start
+
+avec docker : docker-compose up --build
