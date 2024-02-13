@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('', name: 'app.test')]
@@ -45,6 +46,26 @@ class TestController extends AbstractController
         $form->handleRequest($request); //inspect the given request → check if the form has been submit
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $imageFile->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                // Move the file to the directory where brochures are stored
+                try {
+                    $imageFile->move(
+                        $this->getParameter('brochures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+
+                }
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $test->setImage($newFilename);
+            }
+
             $this->em->persist($test); //save in the database
             $em->flush();
             $this->addFlash('success', 'Commentaire créé avec succès !'); //user feedback
