@@ -29,6 +29,9 @@ class Test
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $ip = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +57,18 @@ class Test
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIp(): ?string
+    {
+        return $this->ip;
+    }
+
+    public function setIp(?string $ip): static
+    {
+        $this->ip = $ip;
 
         return $this;
     }

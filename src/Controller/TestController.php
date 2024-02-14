@@ -46,6 +46,7 @@ class TestController extends AbstractController
         $form->handleRequest($request); //inspect the given request → check if the form has been submit
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $test->setIp($request->getClientIp());
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);

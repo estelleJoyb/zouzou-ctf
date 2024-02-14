@@ -2,6 +2,11 @@
 	<div class="card mt-2 w-75 mx-auto flex">
 		<div class="card-body">
 			<blockquote class="blockquote mb-0">
+				{% if commentaire.ip %}
+					<h4>{{commentaire.ip}}</h4>
+				{% endif %}
+
+
 				<p>{{commentaire.flag}}</p>
 				<footer class="blockquote-footer">{{cutewords[loop.index0].insult}}
 				</footer>

@@ -24,7 +24,7 @@ class TestType extends AbstractType
                 'constraints' => new File([
                     'maxSize' => '1024k',
                     'mimeTypes' => ['application/png'],
-                    'mimeTypesMessage' => 'façon on en veut pas sur notre serveur on accepte de save que les .png et on l affichera jamais sur la vue'
+                    'mimeTypesMessage' => 'façon on en veut pas sur notre serveur on accepte de save que les .png'
                 ])
             ])
         ;
