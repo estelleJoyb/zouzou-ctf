@@ -20,10 +20,9 @@ class TestType extends AbstractType
                 'label' => 'image',
                 'required' => false,
                 'allow_file_upload' => true,
-                'mapped' => false, //means that field is not associated to any entity property
                 'constraints' => new File([
                     'maxSize' => '1024k',
-                    'mimeTypes' => ['application/png'],
+                    'mimeTypes' => ['image/png'],
                     'mimeTypesMessage' => 'façon on en veut pas sur notre serveur on accepte de save que les .png'
                 ])
             ])

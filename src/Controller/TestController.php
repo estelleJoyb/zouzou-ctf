@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 #[Route('', name: 'app.test')]
 class TestController extends AbstractController
@@ -37,7 +39,7 @@ class TestController extends AbstractController
     }
 
     #[Route('/new', name: '.new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $em): Response|RedirectResponse
+    public function new(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response|RedirectResponse
     {
         $test = new Test();
         //recover the form used for create a commentaire (test)
@@ -51,12 +53,15 @@ class TestController extends AbstractController
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
-                $safeFilename = $imageFile->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-                // Move the file to the directory where brochures are stored
+                // $safeFilename = $imageFile->slug($originalFilename);
+
+                $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                // Move the file to the directory where images are stored
+
                 try {
                     $imageFile->move(
-                        $this->getParameter('brochures_directory'),
+                        $this->getParameter('images'),
                         $newFilename
                     );
                 } catch (FileException $e) {

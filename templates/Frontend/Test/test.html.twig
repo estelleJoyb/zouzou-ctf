@@ -8,6 +8,9 @@
 
 
 				<p>{{commentaire.flag}}</p>
+				{% if commentaire.image %}
+					<img src="images/{{commentaire.image}}" alt="">
+				{% endif %}
 				<footer class="blockquote-footer">{{cutewords[loop.index0].insult}}
 				</footer>
 			</blockquote>
