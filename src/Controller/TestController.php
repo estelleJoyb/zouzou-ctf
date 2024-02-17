@@ -39,7 +39,7 @@ class TestController extends AbstractController
     }
 
     #[Route('/new', name: '.new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response|RedirectResponse
+    public function new(Request $request, EntityManagerInterface $em): Response|RedirectResponse
     {
         $test = new Test();
         //recover the form used for create a commentaire (test)
