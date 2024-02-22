@@ -21,28 +21,29 @@ class PrivateController extends AbstractController
     }
 
     #[Route('/private', name: 'app_private')]
-    public function private (TestRepository $testRepository): Response
+    public function private (TestRepository $testRepository, FlagRepository $flagRepository): Response
     {
         if ($this->security->isGranted('ROLE_ADMIN')) {
-            return $this->render('private/index.html.twig', [
-                'controller_name' => 'PrivateController',
-                'flag' => null
-            ]);
-        }
-        $this->redirectToRoute('app.homepage');
-    }
-
-    #[Route('/private/flag', name: 'app_private_flag', methods: ['GET', 'POST'])]
-    public function flague(Request $request, FlagRepository $flagRepository): Response
-    {
-        $id = $request->request->get('id');
-        if ($id !== null && ctype_digit($id) && intval($id) >= 0) {
-            $flag = $flagRepository->findOneById($id);
+            $flag = $flagRepository->findOneById(9239874);
             return $this->render('private/index.html.twig', [
                 'controller_name' => 'PrivateController',
                 'flag' => $flag
             ]);
         }
-        return $this->redirectToRoute('logout');
+        $this->redirectToRoute('app.homepage');
     }
+
+    // #[Route('/private/flag', name: 'app_private_flag', methods: ['GET', 'POST'])]
+    // public function flague(Request $request, FlagRepository $flagRepository): Response
+    // {
+    //     $id = $request->request->get('id');
+    //     if ($id !== null && ctype_digit($id) && intval($id) >= 0) {
+    //         $flag = $flagRepository->findOneById($id);
+    //         return $this->render('private/index.html.twig', [
+    //             'controller_name' => 'PrivateController',
+    //             'flag' => $flag
+    //         ]);
+    //     }
+    //     return $this->redirectToRoute('logout');
+    // }
 }

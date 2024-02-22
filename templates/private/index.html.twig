@@ -19,21 +19,9 @@
 
 	<div class="example-wrapper">
 		<h1>Un petit flag...</h1>
-		<form action="/private/flag" method="post">
-			<input type="number" name="id" required>
-			<button type="submit"></button>
-		</form>
-		{% if flag %}
-			<h1>{{flag.flag}}</h1>
-		{% endif %}
-
+		<p>{{flag.flag}}</p>
 
 	</div>
 
-	<style>
-		h1 {
-			color: #000;
-			color: rgba(0, 0, 0, 0) !important;
-		}
-	</style>
+	<style></style>
 {% endblock %}
