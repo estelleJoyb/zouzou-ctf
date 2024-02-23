@@ -9,7 +9,7 @@
 		{% if user %}
 			<a href="{{ path('app_logout')}}">Logout</a>
 		{% endif %}
-			<a id="login" class="bg-transparent; " href="{{ path('app_login')}}">Login</a>
+			<a id="login" href="{{ path('app_login')}}">Login</a>
 			<a class="" href="{{ path('app_private')}}">Flag</a>
 		
 		{{ render(controller(
