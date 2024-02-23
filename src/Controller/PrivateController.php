@@ -30,20 +30,6 @@ class PrivateController extends AbstractController
                 'flag' => $flag
             ]);
         }
-        return $this->redirectToRoute('app.homepage');
+        return $this->redirectToRoute('app_login');
     }
-
-    // #[Route('/private/flag', name: 'app_private_flag', methods: ['GET', 'POST'])]
-    // public function flague(Request $request, FlagRepository $flagRepository): Response
-    // {
-    //     $id = $request->request->get('id');
-    //     if ($id !== null && ctype_digit($id) && intval($id) >= 0) {
-    //         $flag = $flagRepository->findOneById($id);
-    //         return $this->render('private/index.html.twig', [
-    //             'controller_name' => 'PrivateController',
-    //             'flag' => $flag
-    //         ]);
-    //     }
-    //     return $this->redirectToRoute('logout');
-    // }
 }
