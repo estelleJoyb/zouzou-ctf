@@ -30,7 +30,7 @@ class PrivateController extends AbstractController
                 'flag' => $flag
             ]);
         }
-        $this->redirectToRoute('app.homepage');
+        return $this->redirectToRoute('app.homepage');
     }
 
     // #[Route('/private/flag', name: 'app_private_flag', methods: ['GET', 'POST'])]

@@ -7,11 +7,11 @@
 		<h1>Salut les Zouzou</h1>
 		<p>Rien ne nous ferait plus plaisir que d'avoir un message de vous :</p>
 		{% if user %}
-			<a class="" href="{{ path('app_private')}}">Flag</a>
 			<a href="{{ path('app_logout')}}">Logout</a>
-		{% else %}
-			<a id="login" class="bg-transparent; " href="{{ path('app_login')}}">Login</a>
 		{% endif %}
+			<a id="login" class="bg-transparent; " href="{{ path('app_login')}}">Login</a>
+			<a class="" href="{{ path('app_private')}}">Flag</a>
+		
 		{{ render(controller(
         'App\\Controller\\TestController::new'
     )) }}
